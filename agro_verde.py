@@ -37,3 +37,45 @@ def agregar_producto():
         productos_disponibles.append(nombre)
         print("Producto agregado")
 
+def eliminar_producto():
+    ver_productos()
+    try:
+        num = int(input("Número a eliminar: ")) - 1
+        if 0 <= num < len(productos_disponibles):
+            productos_disponibles.pop(num)
+            print("Producto eliminado")
+    except:
+        print("Error")
+
+def crear_pedido():
+    global contador_pedidos
+
+    print("\n--- NUEVO PEDIDO ---")
+    nombre = input("Nombre cliente: ")
+    telefono = input("Teléfono: ")
+    ubicacion = input("Ubicación: ")
+
+    ver_productos()
+    nums = input("Números de productos (separados por coma): ").split(",")
+
+    productos_pedido = []
+    for n in nums:
+        try:
+            i = int(n.strip()) - 1
+            if 0 <= 1 < len(productos_disponibles):
+                productos_pedido.append(productos_disponibles[i])
+        except:
+            pass
+
+    if productos_pedido:
+        id_pedido = f"P{contador_pedidos:03d}"
+        contador_pedidos += 1
+
+        pedidos[id_pedido] = {
+            "cliente": (nombre, telefono, ubicacion),
+            "productos": productos_pedido,
+            "estado": "Pendiente"
+        }
+        print(f"Pedido {id_pedido} creado")
+
+        
