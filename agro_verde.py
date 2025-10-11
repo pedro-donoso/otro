@@ -19,6 +19,7 @@ contador_pedidos = 2
 def mostrar_menu():
     print("\n=== AGROVERDE ===")
     print("1. Ver productos")
+    print("2. Agregar producto")
     print("3. Eliminar producto")
     print("4. Crear pedidos")
     print("5. Ver pedidos")
@@ -102,3 +103,27 @@ def estadisticas():
     for estado, cant in estados.items():
         print(f" {estado}: {cant}")
 
+# PROGRAMA PRINCIPAL
+print("¡Bienvenido a AgroVerde!")
+
+while True:
+    mostrar_menu()
+    opcion = input("\nOpcion: ")
+
+    if opcion == "1":
+        ver_productos()
+    elif opcion == "2":
+        agregar_producto()
+    elif opcion == "3":
+        eliminar_producto()
+    elif opcion == "4":
+        crear_pedido()
+    elif opcion == "5":
+        ver_pedidos()
+    elif opcion == "6":
+        estadisticas()
+    elif opcion == "0":
+        print("\n¡Hasta pronto!")
+        break
+    else:
+        print("Opción inválida")
