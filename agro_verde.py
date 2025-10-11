@@ -78,4 +78,27 @@ def crear_pedido():
         }
         print(f"Pedido {id_pedido} creado")
 
-        
+def ver_pedidos():
+    print("\n--- PEDIDOS ---")
+    for id_ped, info in pedidos.items():
+        print(f"\n{id_ped}:")
+        print(f" Cliente: {info['cliente'][0]}")
+        print(f" Teléfono: {info['cliente'][1]}")
+        print(f" Productos: {', '.join(info['productos'])}")
+        print(f" Estado: {info['estado']}")
+
+def estadisticas():
+    print("\n--- ESTADÍSTICAS ---")
+    print(f"Productos: {len(productos_disponibles)}")
+    print(f"Categorías: {len(categorias)}")
+    print(f"Pedidos: {len(pedidos)}")
+
+    estados = {}
+    for info in pedidos.values():
+        estado = info["estado"]
+        estados[estado] = estados.get(estado, 0) + 1
+
+    print("\nPedidos por estado:")
+    for estado, cant in estados.items():
+        print(f" {estado}: {cant}")
+
