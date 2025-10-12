@@ -35,3 +35,29 @@ def verificar_disponibilidad(sistema, fecha, hora):
             return False
         return True
 
+def agendar_cita(sistema, id_mascota, fecha, hora, veterinario):
+    """
+    Agenda una cita para una mascota.
+    Retorna True si se asignó, False si no.
+    """
+
+    if id_mascota not in sistema["mascotas"]:
+        print(f"Error: No existe mascota con ID {id_mascota}")
+        return False
+
+    if not verificar_disponibilidad(sistema, fecha, hora):
+        print(f"Error: El horario {fecha} {hora} ya está ocupado")
+        return False
+    
+    mascota = sistema["mascotas"][id_mascota]
+    cita = {
+        "id": len(sistema["citas"]) + 1,
+        "id_mascota": id_mascota,
+        "mascota": mascota["nombre"],
+        "dueno": mascota["dueno"],
+        "fecha": fecha,
+        "hora": hora,
+        "veterinario": veterinario
+    }
+
+    
