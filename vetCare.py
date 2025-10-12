@@ -99,4 +99,25 @@ def mostrar_citas_del_dia(sistema, fecha):
     for cita in sorted(citas_del_dia, key=lambda x: x["hora"]):
         print(f"{cita['hora']} - {cita['mascota']} (Dueño: {cita['dueno']}) - Dr. {cita['veterinario']}")
 
-      
+def mostrar_historial(sistema, id_mascota):
+    """Muestra el historial médico de una mascota."""
+    if id_mascota not in sistema["mascota"]:
+        print(f"Error: No existe mascota con ID {id_mascota}")
+        return
+    
+    mascota = sistema["mascotas"][id_mascota]
+    print(f"\n---HISTORIAL DE {mascota['nombre'].upper()} ---")
+    print(f"Tipo: {mascota['tipo']}")
+    print(f"Dueño: {mascota['dueno']}")
+
+    if not mascota["historial"]:
+        print("Sin tratamientos registrados")
+        return
+
+    print("\nTratamientos:")
+    for id_trat in mascota["historial"]:
+        trat = next(t for t in sistema["tratamientos"] if t["id"] == id_trat)
+        print(f" . {trat['fecha']}: {trat['diagnostico']}")
+        print(f" Medicamentos: {', '.join(trat['medicamentos'])}")
+
+
