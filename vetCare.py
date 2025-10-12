@@ -120,4 +120,40 @@ def mostrar_historial(sistema, id_mascota):
         print(f" . {trat['fecha']}: {trat['diagnostico']}")
         print(f" Medicamentos: {', '.join(trat['medicamentos'])}")
 
+def horarios_disponibles(sistema, fecha):
+    """
+    Retorna lista de horarios disponibles para una fecha.
+    """
+    todos_horarios = ["09:00", "10:00", "11:00", "12:00", "14:00", "15:00", "16:00", "17:00"]
+    disponibles = []
+
+    for hora in todos_horarios:
+        if verificar_disponibilidad(sistema, fecha, hora):
+            disponibles.append(hora)
+
+    return disponibles
+
+def main():
+    print("\n=== SISTEMA VETCARE ===\n")
+
+    sistema = crear_sistema()
+
+    print("--- Registrando Mascotas ---")
+    id1 = registrar_mascota(sistema, "Max", "Perro", "Carlos Pérez", "555-0101")
+    id2 = registrar_mascota(sistema, "Luna", "Gato", "María González", "555-0102")
+    id3 = registrar_mascota(sistema, "Rocky", "Perro", "Juan Rodríguez", "555-0103")
+
+    print("\n--- Agendando Citas ---")
+    agendar_cita(sistema, id1, "15/10/2025", "10:00", "Dr. Martínez")
+    agendar_cita(sistema, id2, "15/10/2025", "11:00", "Dra. López")
+    agendar_cita(sistema, id3, "15/10/2025", "10:00", "Dr. Martínez")
+    agendar_cita(sistema, id3, "15/10/2025", "14:00", "Dr.Martínez")
+
+    print("\n--- Horarios Disponibles 15/10/2025 ---")
+    disponibles = horarios_disponibles(sistema, "15/10/2025")
+    print(f"Horarios libres: {', '.join(disponibles)}")
+
+    mostrar_citas_del_dia(sistema, "15/10/2025")
+
+    
 
