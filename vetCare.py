@@ -87,4 +87,16 @@ def registrar_tratamiento(sistema, id_mascota, fecha, diagnostico, medicamentos)
     print(f"Tratamiento registrado")
     return True
 
+def mostrar_citas_del_dia(sistema, fecha):
+    """Muestra todas las citas de una fecha específica."""
+    citas_del_dia = [c for c in sistema["citas"] if c["fecha"] == fecha]
 
+    if not citas_del_dia:
+        print(f"No hay citas para el {fecha}")
+        return
+    
+    print(f"\n--- CITAS DEL {fecha} ---")
+    for cita in sorted(citas_del_dia, key=lambda x: x["hora"]):
+        print(f"{cita['hora']} - {cita['mascota']} (Dueño: {cita['dueno']}) - Dr. {cita['veterinario']}")
+
+      
