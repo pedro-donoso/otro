@@ -60,4 +60,31 @@ def agendar_cita(sistema, id_mascota, fecha, hora, veterinario):
         "veterinario": veterinario
     }
 
+    sistema["citas"].append(cita)
+    print(f"Cita agendada para {mascota['nombre']} el {fecha} a las {hora}")
+    return True
+
+def registrar_tratamiento(sistema, id_mascota, fecha, diagnostico, medicamentos):
+    """
+    Registra un tratamiento para una mascota.
+    Retorna True si se registró correctamente.
+    """
+    if id_mascota not in sistema["mascotas"]:
+        print(f"Error: No existe mascota con ID {id_mascota}")
+        return False
     
+    tratamiento = {
+        "id": len(sistema["tratamientos"]) + 1,
+        "id_mascota": id_mascota,
+        "fecha": fecha,
+        "diagnostico": diagnostico,
+        "medicamentos": medicamentos
+    }
+
+    sistema["tratamientos"].append(tratamiento)
+    sistema["mascotas"][id_mascota]["historial"].append(tratamiento["id"])
+
+    print(f"Tratamiento registrado")
+    return True
+
+
