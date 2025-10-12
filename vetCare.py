@@ -1,3 +1,5 @@
+total_citas_registradas = 0
+
 def crear_sistema():
     """Crea la estructura inicial del sistema."""
     return {
@@ -33,13 +35,16 @@ def verificar_disponibilidad(sistema, fecha, hora):
     for cita in sistema["citas"]:
         if cita["fecha"] == fecha and cita["hora"] == hora:
             return False
-        return True
+    return True
 
 def agendar_cita(sistema, id_mascota, fecha, hora, veterinario):
     """
     Agenda una cita para una mascota.
     Retorna True si se asignó, False si no.
+    Usa variable global para contador
     """
+
+    global total_citas_registradas
 
     if id_mascota not in sistema["mascotas"]:
         print(f"Error: No existe mascota con ID {id_mascota}")
@@ -61,6 +66,7 @@ def agendar_cita(sistema, id_mascota, fecha, hora, veterinario):
     }
 
     sistema["citas"].append(cita)
+    total_citas_registradas += 1
     print(f"Cita agendada para {mascota['nombre']} el {fecha} a las {hora}")
     return True
 
@@ -101,7 +107,7 @@ def mostrar_citas_del_dia(sistema, fecha):
 
 def mostrar_historial(sistema, id_mascota):
     """Muestra el historial médico de una mascota."""
-    if id_mascota not in sistema["mascota"]:
+    if id_mascota not in sistema["mascotas"]:
         print(f"Error: No existe mascota con ID {id_mascota}")
         return
     
@@ -133,6 +139,10 @@ def horarios_disponibles(sistema, fecha):
 
     return disponibles
 
+def mostrar_total_citas():
+    """Muestra el total de citas usando la variable global."""
+    print(f"\nTotal de citas registradas (variable global): {total_citas_registradas}")
+
 def main():
     print("\n=== SISTEMA VETCARE ===\n")
 
@@ -149,11 +159,25 @@ def main():
     agendar_cita(sistema, id3, "15/10/2025", "10:00", "Dr. Martínez")
     agendar_cita(sistema, id3, "15/10/2025", "14:00", "Dr.Martínez")
 
+    mostrar_total_citas()
+
     print("\n--- Horarios Disponibles 15/10/2025 ---")
     disponibles = horarios_disponibles(sistema, "15/10/2025")
     print(f"Horarios libres: {', '.join(disponibles)}")
 
     mostrar_citas_del_dia(sistema, "15/10/2025")
 
+    print("\n--- Registrando Tratamientos ---")
+    registrar_tratamiento(sistema, id1, "15/10/2025", "Vacunación anual",
+                          ["Vacuna antirrábica", "Vacuna parvovirus"])
+    registrar_tratamiento(sistema, id2, "15/10/2025", "Infección ocular leve",
+                          ["Colirio antibiótico"])
     
+    mostrar_historial(sistema, id1)
+    mostrar_historial(sistema, id2)
+
+    print("\n=== FIN ===\n")
+
+if __name__ == "__main__":
+    main()
 
