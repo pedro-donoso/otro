@@ -22,4 +22,17 @@ def mostrar_menu():
     print("4. Eliminar tarea")
     print("5. Salir")
 
-    
+def agregar_tarea(tareas):
+    """Agrega una nueva tarea."""
+    descripcion = input("\nDescripción: ").strip()
+    if descripcion:
+        tarea = {
+            "id": len(tareas) + 1,
+            "descripcion": descripcion,
+            "completada": False
+        }    
+        tareas.append(tarea)
+        guardar_tareas(tareas)
+        print("¡Tarea agregada!")
+    else:
+        print("La descripción no puede estar vacía.")
