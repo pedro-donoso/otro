@@ -36,3 +36,15 @@ def agregar_tarea(tareas):
         print("¡Tarea agregada!")
     else:
         print("La descripción no puede estar vacía.")
+
+def listar_tareas(tareas):
+    """Lista todas las tareas."""
+    if not tareas:
+        print("\nNo hay tareas.")
+        return
+    
+    print("\n--- TAREAS ---")
+    for t in tareas:
+        estado = "Completada" if t["completada"] else "Pendiente"
+        print(f"{t['id']}. [{estado}] {t['description']}")
+
