@@ -13,4 +13,13 @@ def cargar_tareas():
             return []
         return []
     
+def mostrar_menu():
+    """Muestra el menú principal."""
+    print("\n=== GESTOR DE TAREAS ===")
+    print("1. Agregar tarea")
+    print("2. Listar tareas")
+    print("3. Marcar completada")
+    print("4. Eliminar tarea")
+    print("5. Salir")
+
     
