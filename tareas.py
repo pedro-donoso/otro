@@ -67,3 +67,25 @@ def marcar_completada(tareas):
     except:
         print("ID inválido.")
 
+def eliminar_tarea(tareas):
+    """Elimina una tarea."""
+    if not tareas:
+        print("\nNo hay tareas.")
+        return
+    
+    listar_tareas(tareas)
+    try:
+        id_tarea = int(input("\nID de la tarea a eliminar: "))
+        for i, t in enumerate(tareas):
+            if t["id"] == id_tarea:
+                tareas.pop(i)
+
+                for j, tarea in enumerate(tareas):
+                    tarea["id"] = j +1
+                guardar_tareas(tareas)
+                print("¡Tarea eliminada!")
+                return
+        print("ID no encontrado.")
+    except:
+        print("ID inválido")
+
