@@ -89,3 +89,27 @@ def eliminar_tarea(tareas):
     except:
         print("ID inválido")
 
+def main():
+    """Función principal."""
+    tareas = cargar_tareas()
+
+    while True:
+        mostrar_menu()
+        opcion = input("\nOpción: ").strip()
+
+        if opcion == '1':
+            agregar_tarea(tareas)
+        elif opcion == '2':
+            listar_tareas(tareas)
+        elif opcion == '3':
+            marcar_completada(tareas)
+        elif opcion == '4':
+            eliminar_tarea(tareas)
+        elif opcion == '5':
+            print("\n¡Hasta luego!")
+            break
+        else:
+            print("Opción inválida.")
+
+if __name__ == "__main__":
+    main()
