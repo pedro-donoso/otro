@@ -7,11 +7,16 @@ def cargar_tareas():
     """Carga las tareas desde el archivo."""
     if os.path.exists(ARCHIVO):
         try:
-            with open(Archivo, 'r') as f:
+            with open(ARCHIVO, 'r') as f:
                 return json.load(f)
         except:
             return []
-        return []
+    return []
+
+def guardar_tareas(tareas):
+    """Guarda las tareas en el archivo."""
+    with open(ARCHIVO, 'w') as f:
+        json.dump(tareas, f, indent=2)
     
 def mostrar_menu():
     """Muestra el menú principal."""
@@ -46,7 +51,7 @@ def listar_tareas(tareas):
     print("\n--- TAREAS ---")
     for t in tareas:
         estado = "Completada" if t["completada"] else "Pendiente"
-        print(f"{t['id']}. [{estado}] {t['description']}")
+        print(f"{t['id']}. [{estado}] {t['descripcion']}")
 
 def marcar_completada(tareas):
     """Marca una tarea como completada."""
@@ -87,7 +92,7 @@ def eliminar_tarea(tareas):
                 return
         print("ID no encontrado.")
     except:
-        print("ID inválido")
+        print("ID inválido.")
 
 def main():
     """Función principal."""
