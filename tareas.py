@@ -48,3 +48,22 @@ def listar_tareas(tareas):
         estado = "Completada" if t["completada"] else "Pendiente"
         print(f"{t['id']}. [{estado}] {t['description']}")
 
+def marcar_completada(tareas):
+    """Marca una tarea como completada."""
+    if not tareas:
+        print("\nNo hay tareas.")
+        return
+    
+    listar_tareas(tareas)
+    try:
+        id_tarea = int(input("\nID de la tarea: "))
+        for t in tareas:
+            if t["id"] == id_tarea:
+                t["completada"] = True
+                guardar_tareas(tareas)
+                print("¡Tarea completada!")
+                return
+            print("ID no encontrado.")
+    except:
+        print("ID inválido.")
+
