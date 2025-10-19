@@ -40,5 +40,11 @@ def calcular_factorial(n):
         resultado *= i
     return resultado
 
+def tabla_multiplicar(numero):
+    """Genera tabla de multiplicar"""
+    print(f"\nTabla del {numero}:")
+    for i in range(1, 11):
+        print(f"{numero} x {i} = {numero * i}")
+
 
 
