@@ -21,9 +21,9 @@ def convertir_temperatura(valor, de_tipo, a_tipo):
     celcius = 0
 
     if de_tipo == 'C':
-        celcius = valor
+        celsius = valor
     elif de_tipo == 'F':
-        celcius = (valor - 32) * 5/9
+        celsius = (valor - 32) * 5/9
     elif de_tipo == 'K':
         celsius = valor - 273.15
 
@@ -32,9 +32,9 @@ def convertir_temperatura(valor, de_tipo, a_tipo):
     elif a_tipo == 'F':
         return celsius * 9/5 + 32
     elif a_tipo == 'K':
-        return celcius + 273.15
+        return celsius + 273.15
     
-    return celcius
+    return celsius
 
 def calcular_factorial(n):
     """Calcula el factorial usando bucle"""
