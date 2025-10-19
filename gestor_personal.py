@@ -105,5 +105,33 @@ def menu_agenda():
             else:
                 print("No encontrado")
 
+def formulario():
+    """Formulario con diferentes tipos de datos"""
+    global contador
+
+    print("\n=== FORMULARIO ===")
+
+    nombre = input("Nombre: ")
+
+    edad = int(input("Edad: "))
+
+    altura = float(input("Altura (m): "))
+
+    estudiante = input("¿Estudiante? (si/no): ").lower() == 'si'
+
+    print("\n--- RESUMEN ---")
+    print(f"Nombre: {nombre}")
+    print(f"Edad: {edad} años")
+    print(f"Altura: {altura} m")
+    print(f"Estudiante: {estudiante}")
+
+    if edad < 18:
+        print("Eres menor de edad")
+    else:
+        print("Eres mayor de edad")
+
+    contador += 1
+    print(f"\nUsuarios registrados: {contador}")
+
 
 
