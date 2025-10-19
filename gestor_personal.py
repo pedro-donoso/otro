@@ -133,5 +133,61 @@ def formulario():
     contador += 1
     print(f"\nUsuarios registrados: {contador}")
 
+def main():
+    """Funcion principal"""
+    print(f"\n{'='*40}")
+    print(f" {nombre_sistema}")
+    print(f"{'='*40}")
 
+    while activo:
+        print("\n1. Conversor de temperatura")
+        print("2. Analizador de números")
+        print("3. Factorial")
+        print("4. Tabla de multiplicar")
+        print("5. Agenda de contactos")
+        print("6. Formulario")
+        print("7. Ver historial")
+        print("0. Salir")
+
+        opcion = input("\nElige opción: ")
+
+        if opcion == '0':
+            print("\n¡Hasta luego!")
+            break
+
+        elif opcion == '1':
+            menu_conversor()
+
+        elif opcion == '2':
+            num = float(input("\nNúmero: "))
+            analizar_numero(num)
+
+        elif opcion == '3':
+            n = int(input("\nNúmero: "))
+            resultado = calcular_factorial(n)
+            if resultado:
+                print(f"\n{n}! = {resultado}")
+            else:
+                print("Error: número negativo")
+
+        elif opcion == '4':
+            num = int(input("\n¿Tabla del? "))
+            tabla_multiplicar(num)
+
+        elif opcion == '5':
+            menu_agenda()
+
+        elif opcion == '6':
+            formulario()
+
+        elif opcion == '7':
+            print("\n=== HISTORIAL ===")
+            if historial:
+                for i, item in enumerate(historial, 1):
+                    print(f"{i}. {item}")
+            else:
+                print("Sin historial")
+
+if __name__ == "__main__":
+    main()
 
