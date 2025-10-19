@@ -46,5 +46,21 @@ def tabla_multiplicar(numero):
     for i in range(1, 11):
         print(f"{numero} x {i} = {numero * i}")
 
+def analizar_numero(num):
+    """Analiza un número con condicionales"""
+    print(f"\nAnálisis de {num}:")
 
+    if num > 0:
+        print("Es POSITIVO")
+    elif num < 0:
+        print("Es NEGATIVO")
+    else:
+        print("Es CERO")
+
+    if num % 2 == 0:
+        print("Es PAR")
+    else:
+        print("Es IMPAR")
+
+    
 
