@@ -73,5 +73,37 @@ def menu_conversor():
     print(f"\n{valor}°{de} = {resultado:.2f}°{a}")
     historial.append(f"{valor}°{de} -> {resultado:.2f}°{a}")
 
-    
+def menu_agenda():
+    """Sistema de agenda con diccionario"""
+    while True:
+        print("\n=== AGENDA DE CONTACTOS ===")
+        print("1. Agregar contacto")
+        print("2. Ver contactos")
+        print("3. Buscar contacto")
+        print("0. Salir")
+
+        opcion = input("\nOpción: ")
+
+        if opcion == '0':
+            break
+        elif opcion == '1':
+            nombre = input("Nombre: ")
+            telefono = input("Teléfono: ")
+            contactos[nombre] = telefono
+            print(f"Contacto '{nombre}' agregado")
+        elif opcion == '2':
+            if contactos:
+                print("\nMis contactos:")
+                for nombre, tel in contactos.items():
+                    print(f" {nombre}: {tel}")
+            else:
+                print("No hay contactos")
+        elif opcion == '3':
+            nombre = input("Buscar: ")
+            if nombre in contactos:
+                print(f"{nombre}: {contactos[nombre]}")
+            else:
+                print("No encontrado")
+
+
 
