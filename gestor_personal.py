@@ -31,3 +31,14 @@ def convertir_temperatura(valor, de_tipo, a_tipo):
     else:
         return celcius + 273.15
 
+def calcular_factorial(n):
+    """Calcula el factorial usando bucle"""
+    if n < 0:
+        return None
+    resultado = 1
+    for i in range(2, n + 1):
+        resultado *= i
+    return resultado
+
+
+
