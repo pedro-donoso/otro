@@ -62,5 +62,16 @@ def analizar_numero(num):
     else:
         print("Es IMPAR")
 
+def menu_conversor():
+    """Conversor de temperatura"""
+    print("\n=== CONVERSOR DE TEMPERATURA ===")
+    valor = float(input("Valor: "))
+    de = input("De (C/F/K): ").upper()
+    a = input("A (C/F/K): ").upper()
+
+    resultado = convertir_temperatura(valor, de, a)
+    print(f"\n{valor}°{de} = {resultado:.2f}°{a}")
+    historial.append(f"{valor}°{de} -> {resultado:.2f}°{a}")
+
     
 
