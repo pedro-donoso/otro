@@ -146,12 +146,12 @@ def main():
 
     while activo:
         print("\n1. Conversor de temperatura")
-        print("2. Analizador de números")
+        print("2. Analizador de números (enteros)")
         print("3. Factorial")
         print("4. Tabla de multiplicar")
         print("5. Agenda de contactos")
         print("6. Formulario")
-        print("7. Ver historial")
+        print("7. Ver historial (Conversor de Temperatura)")
         print("0. Salir")
 
         opcion = input("\nElige opción: ")
