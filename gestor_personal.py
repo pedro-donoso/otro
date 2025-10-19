@@ -21,7 +21,7 @@ def convertir_temperatura(valor, de_tipo, a_tipo):
     celcius = 0
 
     if de_tipo == 'C':
-        celsius = valor
+        celcius = valor
     elif de_tipo == 'F':
         celcius = (valor - 32) * 5/9
     elif de_tipo == 'K':
