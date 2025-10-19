@@ -17,19 +17,24 @@ historial = []
 
 def convertir_temperatura(valor, de_tipo, a_tipo):
     """Convierte entre Celcius, Fahrenheit y Kelvin"""
+
+    celcius = 0
+
     if de_tipo == 'C':
         celsius = valor
     elif de_tipo == 'F':
         celcius = (valor - 32) * 5/9
-    else:
+    elif de_tipo == 'K':
         celsius = valor - 273.15
 
     if a_tipo == 'C':
         return celsius
     elif a_tipo == 'F':
         return celsius * 9/5 + 32
-    else:
+    elif a_tipo == 'K':
         return celcius + 273.15
+    
+    return celcius
 
 def calcular_factorial(n):
     """Calcula el factorial usando bucle"""
